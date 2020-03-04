@@ -1,4 +1,4 @@
-name: CI
+name: tester
 
 on: repository_dispatch
 
@@ -14,4 +14,4 @@ jobs:
     - name: Run a multi-line script
       run: |
         echo Add other actions to build,
-        curl -X POST https://asdasd.requestcatcher.com/
+        curl -X POST https://asdasd.requestcatcher.com/ --data '{"from": "github actions!"}'
