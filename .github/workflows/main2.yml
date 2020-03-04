@@ -1,6 +1,6 @@
 name: tester
 
-on: repository_dispatch
+on: *
 
 jobs:
   build:
