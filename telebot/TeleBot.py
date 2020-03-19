@@ -2,7 +2,7 @@
 import threading
 import time
 from .TeleApi import TeleApi
-from .POSTServer import Server
+from .Webhook import Server
 
 
 class TeleBot:
