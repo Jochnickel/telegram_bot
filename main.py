@@ -1,5 +1,5 @@
 from telebot.TeleBot import TeleBot
 
-bot = TeleBot('1107986005:AAGPAHSRbezdhynzOYdlgadIBnJ2cLgq5dA', webhook = True)
+bot = TeleBot(token = open('token.txt','r').read(), webhook = True)
 
-bot.sendMessage(452549370,"hi")
+# bot.sendMessage(452549370,"hi")

@@ -1,6 +1,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import ssl
 import threading
+from io import BytesIO
 
 class Server:
 	def __init__(self, port = 80):
@@ -9,6 +10,12 @@ class Server:
 				content_length = int(selfHandler.headers['Content-Length'])
 				body = selfHandler.rfile.read(content_length)
 				selfHandler.send_response(200)
+				selfHandler.end_headers()
+				response = BytesIO()
+				response.write(b'This is POST request. ')
+				response.write(b'Received: ')
+				response.write(body)
+				selfHandler.wfile.write(response.getvalue())
 				self.onPost(body)
 	
 	

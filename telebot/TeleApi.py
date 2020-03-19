@@ -25,6 +25,9 @@ class TeleApi:
 		if type(reply_to_message_id)!=int: raise TypeError
 		if type(reply_markup)!=None: pass
 		
+		text = urllib.parse.quote(text)
+
+
 		try: urllib.request.urlopen('%ssendMessage?chat_id=%s&text=%s'%(self.__preUrl,chat_id,text))
 		except TypeError: pass
 		except urllib.error.HTTPError as e:

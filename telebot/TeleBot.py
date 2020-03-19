@@ -11,9 +11,7 @@ class TeleBot:
 
 		if webhook:
 			self.__poster = Server()
-			def onPost(txt):
-				self.sendMessage(452549370, str(txt))
-			self.__poster.onPost = onPost
+			self.__poster.onPost = self.onMessage
 	
 		def thread_f():
 			while True:
@@ -25,3 +23,6 @@ class TeleBot:
 	def sendMessage(self, id, text):
 		self.__api.sendMessage(id, text)
 	
+	def onMessage(self, message):
+		self.sendMessage(452549370, str(message))
+		print("New Message: ",message)
