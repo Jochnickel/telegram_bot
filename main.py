@@ -1,5 +1,6 @@
 from telebot.TeleBot import TeleBot
 
-bot = TeleBot(token = open('token.txt','r').read(), webhook = True)
+with open('/root/telegram_bot/token.txt','r') as t:
+	bot = TeleBot(token = t.read(), webhook = True)
 
-# bot.sendMessage(452549370,"hi")
+bot.sendMessage(452549370,"hi")

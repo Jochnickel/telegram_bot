@@ -3,8 +3,9 @@ import ssl
 import threading
 from io import BytesIO
 
-class Server:
-	def __init__(self, port = 80):
+class Webhook:
+	def __init__(self, token, port = 80):
+		
 		class MyHandler(BaseHTTPRequestHandler):
 			def do_POST(selfHandler):
 				content_length = int(selfHandler.headers['Content-Length'])
@@ -17,6 +18,7 @@ class Server:
 				response.write(body)
 				selfHandler.wfile.write(response.getvalue())
 				self.onPost(body)
+				print("asd")
 	
 	
 		threading.Thread(
