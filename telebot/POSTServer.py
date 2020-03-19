@@ -2,20 +2,23 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import ssl
 import threading
 
-class MyHandler(BaseHTTPRequestHandler):
-	def do_POST():
-		content_length = int(self.headers['Content-Length'])
-		body = self.rfile.read(content_length)
-		print(body)
-
-
-httpd = HTTPServer(('', 80), MyHandler)
-
-threading.Thread(target = httpd.serve_forever).start()
-print('Webhook Server running!')
-
-
-
+class Server:
+	def __init__(self, port = 80):
+		class MyHandler(BaseHTTPRequestHandler):
+			def do_POST(selfHandler):
+				content_length = int(selfHandler.headers['Content-Length'])
+				body = selfHandler.rfile.read(content_length)
+				selfHandler.send_response(200)
+				self.onPost(body)
+	
+	
+		threading.Thread(
+			target = HTTPServer(('', port), MyHandler).serve_forever
+		).start()
+		print('Webhook Server running!')
+	
+	def onPost(self, txt):
+		print('self.onPost: ',txt)
 
 #httpd.socket = ssl.wrap_socket (httpd.socket,
 #        keyfile='/etc/letsencrypt/live/bot1.telegram.jj22.de/privkey.pem',
