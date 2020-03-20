@@ -1,8 +1,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
-import urllib.request
+import requests
 import ssl
 import threading
-from io import BytesIO
 
 class Webhook:
 	def __init__(self, port = 80, token = None, webhook_url = None):
@@ -32,12 +31,11 @@ class Webhook:
 			target = HTTPServer(('', port), MyHandler).serve_forever
 		).start()
 		if token and webhook_url:
-			urllib.request.urlopen('%s'%(webhook_url))
-			urllib.request.urlopen('https://api.telegram.org/bot%s/setWebhook?url='%(token, webhook_url)):
+			pass
 		print('Webhook Server running!')
 	
-	def onPost(self, txt):
-		print('self.onPost: ',txt)
+	def onUpdate(self, update):
+		print('self.onPost: ',update)
 
 #httpd.socket = ssl.wrap_socket (httpd.socket,
 #        keyfile='/etc/letsencrypt/live/bot1.telegram.jj22.de/privkey.pem',

@@ -1,6 +1,9 @@
 from telebot.TeleBot import TeleBot
+import json
 
-with open('/root/telegram_bot/token.txt','r') as t:
-	bot = TeleBot(token = t.read(), webhook = True)
+with open('token.txt','r') as t:
+	# bot = TeleBot(token = t.read(), set_webhook = 'bot1.telegram.jj22.de')
+	bot = TeleBot(token = t.read(),)
 
-bot.sendMessage(452549370,"hi")
+bot.sendPoll(452549370,"hi",['asd',"ok"])
+# print(len([1]))
